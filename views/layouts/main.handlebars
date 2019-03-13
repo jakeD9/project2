@@ -6,9 +6,55 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
 
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <title>Home Page</title>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-auth.js"></script>
+
+  <title>Sign In</title>
+
+  <script>
+    var config = {
+      apiKey: "AIzaSyCWat2b43WXa7yr8dZ4_aZ0WnyGPH-4dos",
+      authDomain: "mybeer-8d95e.firebaseapp.com",
+      databaseURL: "https://mybeer-8d95e.firebaseio.com",
+      projectId: "mybeer-8d95e",
+      storageBucket: "mybeer-8d95e.appspot.com",
+      messagingSenderId: "222789239888"
+    };
+    firebase.initializeApp(config);
+
+  </script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <script>
+    var uiConfig = {
+      callbacks: {
+        signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+          return true;
+        },
+        uiShown: function () {
+          document.getElementById('loader').style.display = 'none';
+        }
+      },
+
+      signInFlow: 'popup',
+      signInSuccessUrl: '/',
+      signInOptions: [
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      ],
+      tosUrl: 'NA',
+      privacyPolicyUrl: 'NA'
+    };
+
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+    ui.start('#password', uiConfig);
+  </script>
 </head>
 
 <body>
