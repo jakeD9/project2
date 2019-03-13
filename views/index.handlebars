@@ -14,7 +14,23 @@
             <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
+
+
         </form>
+          <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="username" id="username" type="text" >
+          <label for="username">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="password" type="text">
+          <label for="password">Last Name</label>
+        </div>
+      </div>
+
+
         <h3>Examples:</h3>
         <ul id="example-list" class="list-group">
           {{#each examples}}
