@@ -7,7 +7,7 @@ h2 {
 }
 
 body {
-  background-image: url("../assets/corner.jpg");
+  background-image: url("../assets/brick.jpg");
   background-size: 100%;
 }
 
@@ -31,4 +31,20 @@ body {
 
 .my-nav:hover {
   content: url("../assets/my_on.png");
+}
+
+.logo-nav {
+  content: url("../assets/beerme.png");
+  width: 400px;
+}
+
+.logo-nav-2 {
+  content: url("../assets/beerme.png");
+  width: 700px;
+  margin-right: 500px;
+}
+
+.navbar {
+  padding-top: 5px;
+  margin-top: 10px;
 }
