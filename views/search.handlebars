@@ -1,0 +1,41 @@
+
+<div class="navbar row">
+    <a href="/" class="logo-nav"></a>
+    <a href="/search" class="search-nav"></a>
+    <a href="/mybeers" class="my-nav"></a>
+</div>
+{{!-- <div class="divider"></div> --}}
+</div>
+
+<br><br><br><br>
+<div class="container row">
+    <div class="form-group col sm4">
+       
+        <textarea class="form-control" id="example-description" aria-describedby="example-description"
+            placeholder="Search Brewery Here"></textarea>
+   <br>
+    <button id="submit" class="black-text btn grey lighten-5">Submit</button>
+     </div>
+    </form>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Example</h5>
+                    <p>
+                        <strong>ID</strong>: {{example.id}}</p>
+                    <p>
+                        <p>
+                            <strong>Beer</strong>: {{example.beer}}</p>
+                        <p>
+                            <strong>ABV</strong> {{example.abv}}</p>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

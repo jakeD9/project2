@@ -5,3 +5,46 @@
 h2 {
   font-size: 5px;
 }
+
+body {
+  background-image: url("../assets/brick.jpg");
+  background-size: 100%;
+}
+
+#submit {
+  box-shadow: 0px 0px 25px white;
+}
+
+/* navbar light up effects */
+
+.search-nav {
+  content: url("../assets/search_off.png");
+}
+
+.search-nav:hover {
+  content: url("../assets/search_on.png");
+}
+
+.my-nav {
+ content: url("../assets/my_off.png");
+}
+
+.my-nav:hover {
+  content: url("../assets/my_on.png");
+}
+
+.logo-nav {
+  content: url("../assets/beerme.png");
+  width: 400px;
+}
+
+.logo-nav-2 {
+  content: url("../assets/beerme.png");
+  width: 700px;
+  margin-right: 500px;
+}
+
+.navbar {
+  padding-top: 5px;
+  margin-top: 10px;
+}
