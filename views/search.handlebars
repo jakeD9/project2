@@ -4,17 +4,17 @@
     <a href="/search" class="search-nav"></a>
     <a href="/mybeers" class="my-nav"></a>
 </div>
-{{!-- <div class="divider"></div> --}}
+<div class="divider"></div>
 </div>
 
 <br><br><br><br>
 <div class="container row">
     <div class="form-group col sm4">
        
-        <textarea class="form-control" id="example-description" aria-describedby="example-description"
+        <textarea class="bar form-control" id="example-description" aria-describedby="example-description"
             placeholder="Search Brewery Here"></textarea>
    <br>
-    <button id="submit" class="black-text btn grey lighten-5">Submit</button>
+    <button id="submit" class="black-text btn grey lighten-5">Search</button>
      </div>
     </form>
 </div>
@@ -23,17 +23,15 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
-            <div class="card mt-4">
+            <div id="search-block" class="card mt-4">
                 <div class="card-body">
-                    <h5 class="card-title">Example</h5>
-                    <p>
-                        <strong>ID</strong>: {{example.id}}</p>
-                    <p>
-                        <p>
-                            <strong>Beer</strong>: {{example.beer}}</p>
-                        <p>
-                            <strong>ABV</strong> {{example.abv}}</p>
-                        
+                    <h5 class="card-title">Search Results</h5>
+                    <br>
+                    <p><strong>Brewery</strong>: {{example.brewery}}</p>
+                    <p><strong>Image</strong>: {{example.image}}</p>
+                    <p><strong>Beer</strong>: {{example.beer_name}}</p>
+                    <p><strong>ABV</strong>: {{example.abv}}</p>
+                    <div class="divider"></div>
                 </div>
             </div>
         </div>

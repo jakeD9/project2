@@ -39,12 +39,41 @@ body {
 }
 
 .logo-nav-2 {
-  content: url("../assets/beerme.png");
-  width: 700px;
-  margin-right: 500px;
+  content: url("../assets/beerme_on.png");
+  width: 100%;
+}
+
+.logo-nav-2:hover {
+  content: url("../assets/beerme_off.png");
+  width: 100%;
 }
 
 .navbar {
   padding-top: 5px;
   margin-top: 10px;
+}
+
+#saved-block {
+  /* border: 2px solid red; */
+  box-shadow: 0px 0px 25px white;
+}
+
+.bar {
+  box-shadow: 0px 0px 25px white;
+}
+
+.glow {
+  box-shadow: 0px 0px 25px white;
+}
+
+.login {
+  height: 40%;
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 1350px) {
+  .logo-nav {
+    width: 100%;
+  }
+
 }
