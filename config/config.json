@@ -1,6 +1,8 @@
 {
   "development": {
     "username": "root",
+
+=======
     "password": "CAM7gjo1",
     "database": "beers_db",
     "host": "localhost",

@@ -60,7 +60,3 @@ createAct.on("click", (event) => {
   promise.then((user) => console.log(user));
   promise.catch((error) => console.log(error));
 });
-
-
-
-
