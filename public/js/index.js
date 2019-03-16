@@ -1,101 +1,62 @@
 
+// initialize firebase auth
+var config = {
+  apiKey: "AIzaSyCWat2b43WXa7yr8dZ4_aZ0WnyGPH-4dos",
+  authDomain: "mybeer-8d95e.firebaseapp.com",
+  databaseURL: "https://mybeer-8d95e.firebaseio.com",
+  projectId: "mybeer-8d95e",
+  storageBucket: "mybeer-8d95e.appspot.com",
+  messagingSenderId: "222789239888"
+};
+firebase.initializeApp(config);
 
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+// get page elements from login page
+const emailTxt = $("#name");
+const passTxt = $("#password");
+const loginBtn = $("#log-in");
+const createAct = $("#new-account");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  newUser: function(example) {
     return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
       type: "POST",
-      url: "api/examples",
+      url: "api/users",
       data: JSON.stringify(example)
     });
   },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
+// authenticate users that are registered in firebase and copy the user ID to session storage
+loginBtn.on("click", (event) => {
+  const email = emailTxt.val().trim();
+  const pass = passTxt.val().trim();
+  console.log(email);
+  console.log(pass);
+  const auth = firebase.auth();
+  const promise = auth.signInWithEmailAndPassword(email, pass);
+  promise.then((res) => {
+    // console.log(res)
+    console.log(res.user.email)
+    sessionStorage.setItem("user", res.user.email);
+    console.log(sessionStorage.getItem("user"));
+    API.newUser(sessionStorage.getItem("user"));
   });
-};
-
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
-
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
-
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
-
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  promise.catch((error) => {
+    console.log(error);
   });
+});
 
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
-
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
-  });
-};
-
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+// writes a new user to firebase
+createAct.on("click", (event) => {
+  const email = emailTxt.val().trim();
+  const pass = passTxt.val().trim();
+  console.log(email);
+  console.log(pass);
+  const auth = firebase.auth();
+  const promise = auth.createUserWithEmailAndPassword(email, pass);
+  promise.then((user) => console.log(user));
+  promise.catch((error) => console.log(error));
+});
