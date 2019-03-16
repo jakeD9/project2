@@ -22,7 +22,7 @@ var API = {
     return $.ajax({
       type: "POST",
       url: "api/users",
-      data: JSON.stringify(example)
+      data: {'email': example}
     });
   },
 };
