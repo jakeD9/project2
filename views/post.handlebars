@@ -7,47 +7,52 @@
 </div>
 
 <br><br><br><br>
-<div class="container" id="userInput">
-    <h2>Create a new post</h2>
+<div class="container glow" id="userInput">
+    <h2>Add a Beer to Your List</h2>
     <div class="row">
         <form class="col s12">
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="first_name" type="text" class="validate">
-                    <label for="first_name">First Name</label>
+                    <input id="inputBeer" type="text" class="validate">
+                    <label for="inputBeer">Beer</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate">
-                    <label for="last_name">Last Name</label>
+                    <input id="inputBrewery" type="text" class="validate">
+                    <label for="inputBrewery">Brewery</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="userLocation" type="text" class="validate">
-                    <label for="password">Where are you going?</label>
+                    <input id="inputLocation" type="text" class="validate">
+                    <label for="inputLocation">Where did you drink it?</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input type="text" class="datepicker">
-                    <label for="datepicker">Pick a date</label>
+                    <input id="inputLocation" type="text" class="materialize-textarea">
+                    <label for="inputLocation">Comments</label>
                 </div>
             </div>
-            <a class="waves-effect waves-light btn" id="userSubmit">Submit</a>
         </form>
+
+    </div>
+    <a class="space waves-effect waves-light black-text btn grey lighten-5" id="inputSubmit">Submit</a>
+</div>
+<br><br><br><br>
+<div class="container ">
+    <div class="card glow row">
+        <h2>Beers</h2>
+        <div="card-content col s12 ">
+        <ul id="beerList" class="list-group">
+            <li>blah blah blah</li>
+            {{#each beerlist}}
+        <li>{{this.beer_name}}</li>
+         <li>{{this.brewery}}</li>
+         <li>{{this.abv}}</li>   
+         <button class="btn btn-danger float-right delete">ｘ</button>
+            {{/each}}
+        </ul>
     </div>
 </div>
-
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-8 offset-2">
-            <div id="search-block" class="card mt-4">
-                <div class="card-body">
-                    <h5 class="card-title">My Posts</h5>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+

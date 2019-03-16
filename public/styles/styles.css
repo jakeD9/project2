@@ -54,6 +54,9 @@ body {
 }
 
 
+.space{
+  margin-bottom: 25px;
+}
 
 #saved-block {
   /* border: 2px solid red; */

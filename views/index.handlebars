@@ -8,13 +8,17 @@
 
         <div class="login card col s8">
           <div class="glow card-body">
+
             <div class="input-field">
-              <input placeholder="Username" id="name" type="text">
-              <label for="name">Name</label>
+              <input id="name" type="text">
+              <label for="name">User Name</label>
             </div>
+
             <div class="input-field">
-              <input placeholder="Password" id="password" type="text">
+              <input id="password" type="password" class="validate">
               <label for="password">Password</label>
+              
+
               <button id="log-in" class="black-text btn grey lighten-5">Submit</button>
               {{!-- <a href="/newaccount"> --}}
               <button id="new-account" class="black-text btn grey lighten-5">Create Account</button>
@@ -29,3 +33,8 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
+
+Password: <input type="password" value="FakePSW" id="myInput">
+
+<!-- An element to toggle between password visibility -->
+<input type="checkbox" onclick="password()">Show Password
