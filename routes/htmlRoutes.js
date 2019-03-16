@@ -9,9 +9,9 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/search", function(req, res) {
+  app.get("/post", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(beers_db) {
-      res.render("search", {
+      res.render("post", {
         example: beers_db
       });
     });

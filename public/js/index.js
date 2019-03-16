@@ -1,3 +1,4 @@
+
 // initialize firebase auth
 var config = {
   apiKey: "AIzaSyCWat2b43WXa7yr8dZ4_aZ0WnyGPH-4dos",
@@ -59,6 +60,7 @@ createAct.on("click", (event) => {
   promise.then((user) => console.log(user));
   promise.catch((error) => console.log(error));
 });
+
 
 
 

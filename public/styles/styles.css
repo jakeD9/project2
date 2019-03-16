@@ -53,6 +53,8 @@ body {
   margin-top: 10px;
 }
 
+
+
 #saved-block {
   /* border: 2px solid red; */
   box-shadow: 0px 0px 25px white;
@@ -69,6 +71,11 @@ body {
 .login {
   height: 40%;
   margin-top: 50px;
+}
+
+#userInput {
+  z-index: 10;
+  background: white;
 }
 
 @media screen and (max-width: 1350px) {
