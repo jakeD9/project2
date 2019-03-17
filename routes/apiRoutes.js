@@ -3,15 +3,22 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all examples
   app.get("/api/beerlist", function(req, res) {
-    db.beerlist.findAll({}).then(function(beers_db) {
-      res.json(beers_db);
+    db.Beer.findAll({}).then(function(dbBeer) {
+      res.json(dbBeer);
     });
-  });
+  })
 
-  // Create a new example
-  app.post("/api/posts", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  app.post("/api/beerlist", function(req, res) {
+    console.log(req.body);
+    db.Beer.create(
+      {
+        beer_name: req.body.beer_name,
+        brewery: req.body.brewery,
+        abv: req.body.abv,
+        user: req.body.user
+      }
+    ).then(function(dbBeer) {
+      res.json(dbBeer);
     });
   });
 
