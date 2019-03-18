@@ -3,14 +3,14 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.Beer.findAll().then(function(dbExamples) {
       res.render("index")
     });
   });
 
   // Load example page and pass in an example by id
   app.get("/post", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(beers_db) {
+    db.Beer.findOne({ where: { id: req.params.id } }).then(function(beers_db) {
       res.render("post", {
         example: beers_db
       });
@@ -18,7 +18,7 @@ module.exports = function(app) {
   });
 
   app.get("/mybeers", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+    db.Beer.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
       res.render("mybeers", {
         example: dbExample
       });

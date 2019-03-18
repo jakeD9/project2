@@ -3,22 +3,22 @@ var db = require("../models");
 module.exports = function(app) {
   //Find all users and return them in json
   app.get("/api/users", function(req, res) {
-    console.log(req);
     db.User.findAll({}).then(function(dbUser) {
       res.json(dbUser);
     });
   });
 
   app.post("/api/users", function(req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     db.User.create(
       {
       user: req.body.email
     }
     ).then(function (dbUser) {
       res.json(dbUser);
-    })
+    });
   });
+  
 };
 
 
