@@ -8,13 +8,14 @@ var config = {
   storageBucket: "mybeer-8d95e.appspot.com",
   messagingSenderId: "222789239888"
 };
-firebase.initializeApp(config);
+// firebase.initializeApp(config);
 
 // get page elements from login page
-const emailTxt = $("#name");
-const passTxt = $("#password");
-const loginBtn = $("#log-in");
-const createAct = $("#new-account");
+var emailTxt = $("#name");
+var passTxt = $("#password");
+var loginBtn = $("#log-in");
+var createAct = $("#new-account");
+var submitInput = $("#inputSubmit")
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -60,3 +61,31 @@ createAct.on("click", (event) => {
   promise.then((user) => console.log(user));
   promise.catch((error) => console.log(error));
 });
+
+
+submitInput.on("click", (event) => {
+
+  event.preventDefault();
+
+  var beerInput = $("#inputBeer").val().trim();
+  var breweryInput = $("#inputBrewery").val().trim();
+  var locationInput = $("#inputLocation").val().trim();
+  var commentInput = $("#inputComment").val().trim();
+
+  console.log(beerInput);
+  console.log(breweryInput);
+  console.log(locationInput);
+  console.log(commentInput);
+
+$("#inputBeer").text(" ");
+
+  // beerInput = "";
+  // breweryInput = "";
+  // locationInput = "";
+  // commentInput = "";
+});
+
+// $(window).on('load', setTimeout(function() {
+//   $("#flicker").show(".logo-nav-2-on");
+//   $("#flicker").hide(".logo-nav-2-off");},
+// 1000));
