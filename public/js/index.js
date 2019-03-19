@@ -8,15 +8,23 @@ var config = {
   storageBucket: "mybeer-8d95e.appspot.com",
   messagingSenderId: "222789239888"
 };
-firebase.initializeApp(config);
+// firebase.initializeApp(config);
 
 // get page elements from login page
+<<<<<<< HEAD
+var emailTxt = $("#name");
+var passTxt = $("#password");
+var loginBtn = $("#log-in");
+var createAct = $("#new-account");
+var submitInput = $("#inputSubmit")
+=======
 const emailTxt = $("#name");
 const passTxt = $("#password");
 const loginBtn = $("#log-in");
 const createAct = $("#new-account");
 const beerBtn = $("#beer-btn");
 
+>>>>>>> 36681e4e68701cebe1b63e756fb6c7fa2cf9d1b0
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -80,6 +88,35 @@ createAct.on("click", (event) => {
   promise.catch((error) => console.log(error));
 });
 
+<<<<<<< HEAD
+
+submitInput.on("click", (event) => {
+
+  event.preventDefault();
+
+  var beerInput = $("#inputBeer").val().trim();
+  var breweryInput = $("#inputBrewery").val().trim();
+  var locationInput = $("#inputLocation").val().trim();
+  var commentInput = $("#inputComment").val().trim();
+
+  console.log(beerInput);
+  console.log(breweryInput);
+  console.log(locationInput);
+  console.log(commentInput);
+
+$("#inputBeer").text(" ");
+
+  // beerInput = "";
+  // breweryInput = "";
+  // locationInput = "";
+  // commentInput = "";
+});
+
+// $(window).on('load', setTimeout(function() {
+//   $("#flicker").show(".logo-nav-2-on");
+//   $("#flicker").hide(".logo-nav-2-off");},
+// 1000));
+=======
 beerBtn.on("click", (event) => {
   const beer_name = $("#inputBeer").val().trim();
   const brewery = $("#inputBrewery").val().trim();
@@ -88,3 +125,4 @@ beerBtn.on("click", (event) => {
   console.log(beer_name.toString(), brewery, abv, user.toString());
   API.newBeer(beer_name, brewery, abv, user);
 });
+>>>>>>> 36681e4e68701cebe1b63e756fb6c7fa2cf9d1b0
