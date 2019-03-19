@@ -23,11 +23,11 @@ body {
 /* navbar light up effects */
 
 .search-nav {
-  content: url("../assets/search_off.png");
+  content: url("../assets/logout_off.png");
 }
 
 .search-nav:hover {
-  content: url("../assets/search_on.png");
+  content: url("../assets/logout_on.png");
 }
 
 .my-nav {
