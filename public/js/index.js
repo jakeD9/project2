@@ -8,7 +8,7 @@ var config = {
   storageBucket: "mybeer-8d95e.appspot.com",
   messagingSenderId: "222789239888"
 };
-// firebase.initializeApp(config);
+firebase.initializeApp(config);
 
 // get page elements from login page
 var emailTxt = $("#name");
@@ -16,6 +16,7 @@ var passTxt = $("#password");
 var loginBtn = $("#log-in");
 var createAct = $("#new-account");
 var beerBtn = $("#beer-btn");
+var logOut = $("#logout-btn");
 
 
 // The API object contains methods for each kind of request we'll make
@@ -87,4 +88,9 @@ beerBtn.on("click", (event) => {
   const user = sessionStorage.getItem("user");
   console.log(beer_name.toString(), brewery, abv, user.toString());
   API.newBeer(beer_name, brewery, abv, user);
+});
+
+logOut.on("click", (event) => {
+  sessionStorage.clear();
+  window.location.replace("http://localhost:3000");
 });
