@@ -45,4 +45,6 @@ db.sequelize.sync(syncOptions).then(function() {
   });
 });
 
+// a;lsdkfj
+
 module.exports = app;
