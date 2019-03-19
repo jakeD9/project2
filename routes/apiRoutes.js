@@ -15,7 +15,7 @@ module.exports = function(app) {
         beer_name: req.body.beer_name,
         brewery: req.body.brewery,
         abv: req.body.abv,
-        user: req.body.user
+        user_id: req.body.user
       }
     ).then(function(dbBeer) {
       res.json(dbBeer);
