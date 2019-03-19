@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "A4077ing!",
+=======
+    "password": "CAM7gjo1",
+>>>>>>> 36681e4e68701cebe1b63e756fb6c7fa2cf9d1b0
     "database": "beers_db",
     "host": "localhost",
     "dialect": "mysql"

@@ -11,21 +11,42 @@ var config = {
 // firebase.initializeApp(config);
 
 // get page elements from login page
+<<<<<<< HEAD
 var emailTxt = $("#name");
 var passTxt = $("#password");
 var loginBtn = $("#log-in");
 var createAct = $("#new-account");
 var submitInput = $("#inputSubmit")
+=======
+const emailTxt = $("#name");
+const passTxt = $("#password");
+const loginBtn = $("#log-in");
+const createAct = $("#new-account");
+const beerBtn = $("#beer-btn");
+
+>>>>>>> 36681e4e68701cebe1b63e756fb6c7fa2cf9d1b0
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  newUser: function(example) {
+  newUser: function(user) {
     return $.ajax({
       type: "POST",
       url: "api/users",
-      data: JSON.stringify(example)
+      data: {'email': user}
     });
   },
+  newBeer: function(beer_name, brewery, abv, user) {
+    return $.ajax({
+      type: "POST",
+      url: "api/beerlist",
+      data: {
+        'beer_name': beer_name,
+        'brewery': brewery,
+        'abv': abv,
+        'user': user
+      }
+    });
+  }
 };
 
 
@@ -40,10 +61,11 @@ loginBtn.on("click", (event) => {
   const promise = auth.signInWithEmailAndPassword(email, pass);
   promise.then((res) => {
     // console.log(res)
-    console.log(res.user.email)
+    console.log("Logged in as: " + res.user.email)
     sessionStorage.setItem("user", res.user.email);
-    console.log(sessionStorage.getItem("user"));
-    API.newUser(sessionStorage.getItem("user"));
+    // console.log(sessionStorage.getItem("user"));
+    // API.newUser(sessionStorage.getItem("user"));
+    window.location.replace("http://localhost:3000/mybeers");;
   });
   promise.catch((error) => {
     console.log(error);
@@ -54,14 +76,19 @@ loginBtn.on("click", (event) => {
 createAct.on("click", (event) => {
   const email = emailTxt.val().trim();
   const pass = passTxt.val().trim();
-  console.log(email);
-  console.log(pass);
+  // console.log(email);
+  // console.log(pass);
   const auth = firebase.auth();
   const promise = auth.createUserWithEmailAndPassword(email, pass);
-  promise.then((user) => console.log(user));
+  promise.then((res) => {
+    console.log("New account created, please log in as: " + res.user.email)
+    sessionStorage.setItem("user", res.user.email)
+    API.newUser(sessionStorage.getItem("user"));
+  });
   promise.catch((error) => console.log(error));
 });
 
+<<<<<<< HEAD
 
 submitInput.on("click", (event) => {
 
@@ -89,3 +116,13 @@ $("#inputBeer").text(" ");
 //   $("#flicker").show(".logo-nav-2-on");
 //   $("#flicker").hide(".logo-nav-2-off");},
 // 1000));
+=======
+beerBtn.on("click", (event) => {
+  const beer_name = $("#inputBeer").val().trim();
+  const brewery = $("#inputBrewery").val().trim();
+  const abv = $("#inputAbv").val().trim();
+  const user = sessionStorage.getItem("user");
+  console.log(beer_name.toString(), brewery, abv, user.toString());
+  API.newBeer(beer_name, brewery, abv, user);
+});
+>>>>>>> 36681e4e68701cebe1b63e756fb6c7fa2cf9d1b0
