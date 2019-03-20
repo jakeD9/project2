@@ -39,6 +39,13 @@ var API = {
         'user': user
       }
     });
+  },
+  getBeer: function(user) {
+    return $.ajax({
+      type: "GET",
+      url: "api/beerlist/" + user,
+      data: {'user' : user}
+    });
   }
 };
 
@@ -53,12 +60,11 @@ loginBtn.on("click", (event) => {
   const auth = firebase.auth();
   const promise = auth.signInWithEmailAndPassword(email, pass);
   promise.then((res) => {
-    // console.log(res)
     console.log("Logged in as: " + res.user.email)
     sessionStorage.setItem("user", res.user.email);
     // console.log(sessionStorage.getItem("user"));
     // API.newUser(sessionStorage.getItem("user"));
-    window.location.replace("http://localhost:3000/mybeers");;
+    window.location.replace("http://localhost:3000/mybeers");
   });
   promise.catch((error) => {
     console.log(error);
@@ -75,8 +81,8 @@ createAct.on("click", (event) => {
   const promise = auth.createUserWithEmailAndPassword(email, pass);
   promise.then((res) => {
     console.log("New account created, please log in as: " + res.user.email)
-    sessionStorage.setItem("user", res.user.email)
-    API.newUser(sessionStorage.getItem("user"));
+    // sessionStorage.setItem("user", res.user.email)
+    API.newUser(res.user.email);
   });
   promise.catch((error) => console.log(error));
 });
@@ -88,9 +94,13 @@ beerBtn.on("click", (event) => {
   const user = sessionStorage.getItem("user");
   console.log(beer_name.toString(), brewery, abv, user.toString());
   API.newBeer(beer_name, brewery, abv, user);
+  console.log(user);
+  console.log(API.getBeer(user));
 });
 
 logOut.on("click", (event) => {
   sessionStorage.clear();
   window.location.replace("http://localhost:3000");
 });
+
+
