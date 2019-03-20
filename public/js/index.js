@@ -94,8 +94,7 @@ beerBtn.on("click", (event) => {
   const user = sessionStorage.getItem("user");
   console.log(beer_name.toString(), brewery, abv, user.toString());
   API.newBeer(beer_name, brewery, abv, user);
-  console.log(user);
-  console.log(API.getBeer(user));
+  location.reload();
 });
 
 logOut.on("click", (event) => {
@@ -104,3 +103,26 @@ logOut.on("click", (event) => {
 });
 
 
+myBeerList = () => {
+  const user = sessionStorage.getItem("user");
+  API.getBeer(user).then(
+    (response) => {
+      var beerDiv = $("#beerDiv");
+      console.log(response);
+      for (i=0; i < response.length; i++) {
+        var newBeer =  $("<div> Beer: " + response[i].beer_name + "</div>");
+        var newBrewery = $("<div> Brewery: " + response[i].brewery + "</div>");
+        var newAbv = $("<div> ABV: " + response[i].abv + "</div>");
+        var divider = $("<div class='divider'></div>");
+        beerDiv.append(
+          newBeer,
+          newBrewery,
+          newAbv,
+          divider
+        )
+      }
+    }
+  )
+}
+
+myBeerList();
