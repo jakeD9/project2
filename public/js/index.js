@@ -95,7 +95,7 @@ beerBtn.on("click", (event) => {
   const user = sessionStorage.getItem("user");
   console.log(beer_name.toString(), brewery, abv, user.toString());
   API.newBeer(beer_name, brewery, abv, user);
-  location.reload();
+  // location.reload();
 });
 
 logOut.on("click", (event) => {
