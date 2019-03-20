@@ -8,7 +8,7 @@ var config = {
   storageBucket: "mybeer-8d95e.appspot.com",
   messagingSenderId: "222789239888"
 };
-// firebase.initializeApp(config);
+firebase.initializeApp(config);
 
 // get page elements from login page
 var emailTxt = $("#name");
@@ -61,6 +61,7 @@ loginBtn.on("click", (event) => {
   });
   promise.catch((error) => {
     console.log(error);
+    alert(error);
   });
 });
 
