@@ -3,11 +3,13 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all beers submitted
   app.get("/api/beerlist", function(req, res) {
-    db.Beer.findAll({}).then(function(dbBeer) {
-      res.json(dbBeer);
+    db.beerlist.findAll({}).then(function(beers_db) {
+      res.json(beers_db);
     });
-  })
+  });
 
+
+  // Create a new example
   app.get("/api/beerlist/:user_id", function(req,res) {
     // console.log(req)
     db.Beer.findAll({
@@ -32,12 +34,15 @@ module.exports = function(app) {
       }
     ).then(function(dbBeer) {
       res.json(dbBeer);
+
     });
   });
 
   // Delete an example by id
   app.delete("/api/beerlist/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function(
+      dbExample
+    ) {
       res.json(dbExample);
     });
   });

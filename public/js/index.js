@@ -68,6 +68,7 @@ loginBtn.on("click", (event) => {
   });
   promise.catch((error) => {
     console.log(error);
+    alert(error);
   });
 });
 

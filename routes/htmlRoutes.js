@@ -4,7 +4,7 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     db.Beer.findAll().then(function(dbExamples) {
-      res.render("index")
+      res.render("index");
     });
   });
 
