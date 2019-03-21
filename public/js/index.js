@@ -64,7 +64,7 @@ loginBtn.on("click", (event) => {
     sessionStorage.setItem("user", res.user.email);
     // console.log(sessionStorage.getItem("user"));
     // API.newUser(sessionStorage.getItem("user"));
-    window.location.replace("http://localhost:3000/mybeers");
+    window.location.replace("https://beer-me-project-2.herokuapp.com/mybeers");
   });
   promise.catch((error) => {
     console.log(error);
@@ -86,6 +86,9 @@ createAct.on("click", (event) => {
     API.newUser(res.user.email);
   });
   promise.catch((error) => console.log(error));
+  alert("Account created, please hit the login button!");
+  // $(email).text("");
+  // $(pass).text("");
 });
 
 beerBtn.on("click", (event) => {
@@ -93,14 +96,13 @@ beerBtn.on("click", (event) => {
   const brewery = $("#inputBrewery").val().trim();
   const abv = $("#inputAbv").val().trim();
   const user = sessionStorage.getItem("user");
-  console.log(beer_name.toString(), brewery, abv, user.toString());
   API.newBeer(beer_name, brewery, abv, user);
   // location.reload();
 });
 
 logOut.on("click", (event) => {
   sessionStorage.clear();
-  window.location.replace("http://localhost:3000");
+  window.location.replace("https://beer-me-project-2.herokuapp.com");
 });
 
 
